@@ -12,7 +12,7 @@ export function AlertFdsProject() {
       <Alert>
         <AlertTitle className="text-2xl">Pointage-UM</AlertTitle>
         <AlertDescription>
-          c'est la simplicité du pointage mobile au service de votre entreprise.
+          c &apos;  est la simplicité du pointage mobile au service de votre entreprise.
           Notre application est facile à utiliser, accessible à tous les
           employés et personnalisable selon vos besoins. Fini les feuilles de
           pointage papier, passez à une gestion du temps moderne et efficace.

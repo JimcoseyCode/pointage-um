@@ -32,7 +32,7 @@ export default async function dbConnexion() {
           </h2>
         ) : (
           <h2 className="text-lg text-red-500">
-            Vous n'ètes pas connecter à MongoDB !
+            Vous n&apos;ètes pas connecter à MongoDB !
           </h2>
         )}
       </div>
