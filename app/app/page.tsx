@@ -1,25 +1,26 @@
 "use client"
 import * as React from "react"
 
-import { Progress } from "@/components/ui/progress"
+// import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
-export function ProgressApp() {
-  const [progress, setProgress] = React.useState(13)
+// export function ProgressApp() {
+//   const [progress, setProgress] = React.useState(13)
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500)
-    return () => clearTimeout(timer)
-  }, [])
+//   React.useEffect(() => {
+//     const timer = setTimeout(() => setProgress(66), 500)
+//     return () => clearTimeout(timer)
+//   }, [])
 
-  return <Progress value={progress} className="w-[60%]" />
-}
+//   return <Progress value={progress} className="w-[60%]" />
+// }
 
-export default function Home() {
+export default function Page() {
   
 
   return (
-    <div className="bg-white w-full ">
-    <ProgressApp />
+    <>
+     <div className="bg-white w-full ">
+    {/* <ProgressApp /> */}
       <div className="relative isolate px-6 pt-14 lg:px-8">
      
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
@@ -33,6 +34,7 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
