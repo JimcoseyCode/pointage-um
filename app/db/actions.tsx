@@ -6,11 +6,10 @@ export async function testDatabaseConnection() {
   const isConnected = false;
   try {
     const mongoClient = await client.connect();
-    // Send a ping to confirm a successful connection
+    // Envoie un ping de test http pour verifier la connexion a la base de donnée en tant qu'admin
     await mongoClient.db("admin").command({ ping: 1 });
     console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!",
-    ); // because this is a server action, the console.log will be outputted to your terminal not in the browser
+      "La réponse du ping a été reçu avec succées. Vous ètes maintenant connectée a MongoDB!")
     return !isConnected;
   } catch (e) {
     console.error(e);

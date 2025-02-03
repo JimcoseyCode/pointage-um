@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge"
 //   return <Progress value={progress} className="w-[60%]" />
 // }
 
-export default function Page() {
+export default function app() {
   
 
   return (

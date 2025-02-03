@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { testDatabaseConnection } from "./actions";
-
+// F -> Pour savoir si la base de donnée est connectée 
 export default async function dbConnexion() {
   const isConnected = await testDatabaseConnection();
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex flex-col place-items-center gap-12">
