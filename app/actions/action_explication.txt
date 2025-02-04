@@ -1,0 +1,2 @@
+ici c'est les fonctions dites d'action par exemple Authentification c'est au sein de ce composant que l'accées a la base de donnée pour authetification 
+de cette façon il suffira d'appeler cette fonction dans ta route client pour recuperer directement les données et authetififier

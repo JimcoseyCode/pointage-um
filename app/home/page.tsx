@@ -1,6 +1,5 @@
 "use client"
 import * as React from "react"
-
 // import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 // export function ProgressApp() {
@@ -13,10 +12,7 @@ import { Badge } from "@/components/ui/badge"
 
 //   return <Progress value={progress} className="w-[60%]" />
 // }
-
-export default function Page() {
-  
-
+export default function app() {
   return (
     <>
      <div className="bg-white w-full ">
