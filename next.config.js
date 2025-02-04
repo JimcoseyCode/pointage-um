@@ -1,12 +1,7 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-output: 'standalone',
-experimental: {
-    // Enable features needed for standalone mode
-    outputFileTracingRoot: undefined,
-    outputStandalone: true,
-},
+    // ... autres options
 }
 
 module.exports = nextConfig
-
