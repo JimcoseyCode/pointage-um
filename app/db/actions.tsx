@@ -1,11 +1,11 @@
 "use server";
 
-import client from "@/lib/mongodb";
-
+import db from "@/lib/mongodb";
+// ? Fonction pour tester la connexion a la base de donnée
 export async function testDatabaseConnection() {
   const isConnected = false;
   try {
-    const mongoClient = await client.connect();
+    const mongoClient = await db.connect();
     // Envoie un ping de test http pour verifier la connexion a la base de donnée en tant qu'admin
     await mongoClient.db("admin").command({ ping: 1 });
     console.log(

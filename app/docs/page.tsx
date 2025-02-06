@@ -11,7 +11,7 @@ export default function Docs() {
               projet. Vous y trouverez une description détaillée des
               fonctionnalités implémentées, ainsi que des informations
               techniques et contextuelles.”
-            </p>
+            </p>z
           </blockquote>
         </figure>
         <div className="fixed bottom-0 left-0 flex w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
