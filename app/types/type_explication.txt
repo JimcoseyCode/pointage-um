@@ -1,0 +1,3 @@
+Dans ce dossier serra mis tout les types de donnée en typescript 
+qui serons utiliser pour la modelisation des shéma mongo par exemple user devra etre defini en type typescript 
+pour modeliser directement le shéma qui serra dans la base de donnée
