@@ -1,2 +1,0 @@
-c'est ici que tous les briques elementaire du propjet devrons etre mis par exmeple dans une page la partie hero sections bare de refcherche etc footer ne doivent pas etre directement etre coder dansd la route client cela permet d 'avboir plus de controle sur chaque 
-composant metier  
