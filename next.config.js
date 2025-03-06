@@ -1,7 +1,13 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // ... autres options
+  reactStrictMode: true,
+experimental: {
+},
+  webpack(config) {
+    config.experiments = { ...config.experiments, topLevelAwait: true }
+    return config
+  }
 }
 
-module.exports = nextConfig
+export default nextConfig
