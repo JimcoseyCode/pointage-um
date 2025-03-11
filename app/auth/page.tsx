@@ -1,12 +1,11 @@
 "use client";
 
-// Ajoutez ces imports
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Ajout de useEffect
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react"; // Ajout de useSession
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
@@ -23,10 +22,12 @@ import SignUpForm from "./components/SignUpForm";
 import { createUser } from "@/services/auth.service";
 import Background from "./components/ui/BackgroundAnnimation";
 import { ApiError as _ApiError } from "@/types/error";
-import type { Error as _CustomError } from "@/types/error"; // Ajoutez cette ligne
+import type { Error as _CustomError } from "@/types/error";
+import { UserRole } from "@/types/auth/auth"; // Importez le type UserRole
 
 export default function AuthForm() {
   const router = useRouter();
+  const { data: session, status } = useSession(); // Récupération de la session
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -35,6 +36,37 @@ export default function AuthForm() {
     phoneNumber: "",
   });
   const [error, setError] = useState("");
+
+  // Redirection si l'utilisateur est déjà authentifié
+  useEffect(() => {
+    if (status === "authenticated" && session?.user?.role) {
+      switch (session.user.role) {
+        case UserRole.admin:
+          router.push("/dashboard/admin");
+          break;
+        case UserRole.responsable:
+          router.push("/dashboard/responsable");
+          break;
+        case UserRole.manager:
+          router.push("/dashboard/manager");
+          break;
+        case UserRole.employe:
+          router.push("/dashboard/employe");
+          break;
+        default:
+          router.push("/dashboard");
+      }
+    }
+  }, [session, status, router]);
+
+  // Afficher un indicateur de chargement pendant la vérification de la session
+  if (status === "loading") {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p>Chargement...</p>
+      </div>
+    );
+  }
 
   const updateFormData = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -71,9 +103,10 @@ export default function AuthForm() {
         router.push("/dashboard");
       }
     } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "Une erreur est survenue";
-    setError(errorMessage);
-    console.error("Erreur de connexion:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Une erreur est survenue";
+      setError(errorMessage);
+      console.error("Erreur de connexion:", error);
     }
   };
 
@@ -111,9 +144,10 @@ export default function AuthForm() {
         }
       }
     } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "Une erreur est survenue";
-    setError(errorMessage);
-    console.error("Erreur d'inscription:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Une erreur est survenue";
+      setError(errorMessage);
+      console.error("Erreur d'inscription:", error);
     }
   };
 
@@ -122,7 +156,7 @@ export default function AuthForm() {
       <div className="absolute inset-0 z-0">
         <Background />
       </div>
-      
+
       <div className="relative z-10 flex justify-center items-center min-h-screen">
         {/* Ajout du bouton retour */}
         <div className="absolute top-4 left-4">
@@ -144,7 +178,6 @@ export default function AuthForm() {
         <Card className="w-full max-w-md backdrop-blur-sm bg-white/90 shadow-xl">
           <CardHeader className="space-y-4">
             <div className="flex items-center justify-between space-x-4">
-              {/* <Header badge="Authentification" /> */}
               <LogoApp />
             </div>
             <div>
@@ -154,7 +187,7 @@ export default function AuthForm() {
               </CardDescription>
             </div>
           </CardHeader>
-          
+
           <CardContent>
             <Tabs defaultValue="login" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-8">

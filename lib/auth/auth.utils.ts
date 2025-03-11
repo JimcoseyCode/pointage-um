@@ -1,27 +1,56 @@
-import { PrismaClient } from "@prisma/client";
 import { SessionUser, UserRole } from "@/types/auth/auth";
+import prisma from "@/lib/db.prisma";
 
-const prisma = new PrismaClient();
+type UserInfo = SessionUser;
 
-export async function validateUser(email: string, password: string): Promise<SessionUser> {
-  const user = await prisma.user.findUnique({
-    where: { email }
-  });
+async function authenticateUser(email: string, password: string): Promise<UserInfo | null> {
+  const userTypes = [
+    { model: 'admin', role: UserRole.admin },
+    { model: 'responsable', role: UserRole.responsable },
+    { model: 'manager', role: UserRole.manager },
+    { model: 'employe', role: UserRole.employe },
+  ];
 
-  if (!user) {
-    throw new Error("Aucun utilisateur trouvé avec cet e-mail.");
+  for (const userType of userTypes) {
+    const user = await prisma[userType.model].findUnique({
+      where: { email },
+    });
+
+    // Si l'utilisateur existe
+    if (user) {
+      // Vérifie si le mot de passe correspond
+      if (user.password === password) {
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          firstName: user.firstName,
+          phoneNumber: user.phoneNumber,
+          role: userType.role,
+        };
+      } else {
+        // Si le mot de passe est incorrect
+        throw new Error("Mot de passe incorrect.");
+      }
+    }
   }
 
-  if (password !== user.password) {
-    throw new Error("Mot de passe incorrect.");
-  }
+  // Si aucun utilisateur n'est trouvé avec cet email
+  throw new Error("Aucun utilisateur trouvé avec cet e-mail.");
+}
 
-  return {
-    id: user.id,
-    name: user.name,
-    firstName: user.firstName,
-    email: user.email,
-    phoneNumber: user.phoneNumber,
-    role: user.role as UserRole,
-  };
+export async function validateUser(email: string, password: string): Promise<SessionUser | null> {
+  try {
+    return await authenticateUser(email, password);
+  } catch (error) {
+    console.error("Erreur d'authentification:", error);
+
+    // Renvoie l'erreur spécifique à l'appelant
+    if (error instanceof Error) {
+      throw error; // Renvoie l'erreur avec le message spécifique
+    }
+
+    // En cas d'erreur inattendue
+    throw new Error("Une erreur s'est produite lors de l'authentification.");
+  }
 }
