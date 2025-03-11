@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-  "dev": "next dev",
-  "build": "prisma generate && next build",
-  "start": "next start",
-  "lint": "next lint"
+    "dev": "next dev",
+    "build": "prisma generate && next build", // Modifié
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate" // Ajouté
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
@@ -26,6 +27,7 @@
     "motion": "^12.4.10",
     "next": "15.1.6",
     "next-auth": "^4.24.11",
+    "prisma": "^6.4.1", // Ajouté
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.1",
