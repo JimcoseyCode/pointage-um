@@ -1,24 +1,28 @@
-import { SessionUser, UserRole } from "@/types/auth/auth";
+import { SessionUser, UserRole } from "@/types";
 import prisma from "@/lib/db.prisma";
 
 type UserInfo = SessionUser;
+type PrismaModels = {
+  admin: any;
+  responsable: any;
+  manager: any;
+  employe: any;
+};
 
 async function authenticateUser(email: string, password: string): Promise<UserInfo | null> {
   const userTypes = [
-    { model: 'admin', role: UserRole.admin },
-    { model: 'responsable', role: UserRole.responsable },
-    { model: 'manager', role: UserRole.manager },
-    { model: 'employe', role: UserRole.employe },
+    { model: 'admin' as const, role: UserRole.ADMIN },
+    { model: 'responsable' as const, role: UserRole.RESPONSABLE},
+    { model: 'manager' as const, role: UserRole.MANAGER },
+    { model: 'employe' as const, role: UserRole.EMPLOYE },
   ];
 
   for (const userType of userTypes) {
-    const user = await prisma[userType.model].findUnique({
+    const model = (prisma as unknown as PrismaModels)[userType.model];
+    const user = await model.findUnique({
       where: { email },
     });
-
-    // Si l'utilisateur existe
     if (user) {
-      // Vérifie si le mot de passe correspond
       if (user.password === password) {
         return {
           id: user.id,
@@ -29,13 +33,10 @@ async function authenticateUser(email: string, password: string): Promise<UserIn
           role: userType.role,
         };
       } else {
-        // Si le mot de passe est incorrect
         throw new Error("Mot de passe incorrect.");
       }
     }
   }
-
-  // Si aucun utilisateur n'est trouvé avec cet email
   throw new Error("Aucun utilisateur trouvé avec cet e-mail.");
 }
 
@@ -44,13 +45,9 @@ export async function validateUser(email: string, password: string): Promise<Ses
     return await authenticateUser(email, password);
   } catch (error) {
     console.error("Erreur d'authentification:", error);
-
-    // Renvoie l'erreur spécifique à l'appelant
     if (error instanceof Error) {
-      throw error; // Renvoie l'erreur avec le message spécifique
+      throw error;
     }
-
-    // En cas d'erreur inattendue
     throw new Error("Une erreur s'est produite lors de l'authentification.");
   }
 }

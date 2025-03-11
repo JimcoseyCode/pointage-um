@@ -17,7 +17,7 @@ export default function ResponsableDashboard() {
     );
   }
 
-  if (!session || session.user.role !== UserRole.responsable) {
+  if (!session || session.user.role !== UserRole.RESPONSABLE) {
     redirect("/auth");
   }
 

@@ -8,7 +8,7 @@ import { LogoutButton } from "@/components/ui/LogoutButton";
 export default function EmployeDashboard() {
   const { data: session } = useSession();
 
-  if (!session || session.user.role !== UserRole.employe) {
+  if (!session || session.user.role !== UserRole.EMPLOYE) {
     redirect("/auth");
   }
 

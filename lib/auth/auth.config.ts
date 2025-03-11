@@ -1,7 +1,7 @@
 import {AuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import {validateUser} from "./auth.utils";
-import {UserRole} from "@/types/auth/auth";
+import {UserRole} from "@/types";
 
 export const authOptions: AuthOptions = {
   providers: [

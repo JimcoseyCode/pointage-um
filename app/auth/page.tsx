@@ -23,7 +23,7 @@ import { createUser } from "@/services/auth.service";
 import Background from "./components/ui/BackgroundAnnimation";
 import { ApiError as _ApiError } from "@/types/error";
 import type { Error as _CustomError } from "@/types/error";
-import { UserRole } from "@/types/auth/auth"; // Importez le type UserRole
+import { UserRole } from "@/types"; // Importez le type UserRole
 
 export default function AuthForm() {
   const router = useRouter();
@@ -34,23 +34,25 @@ export default function AuthForm() {
     name: "",
     firstName: "",
     phoneNumber: "",
+    role: UserRole.RESPONSABLE,
   });
   const [error, setError] = useState("");
 
   // Redirection si l'utilisateur est déjà authentifié
   useEffect(() => {
     if (status === "authenticated" && session?.user?.role) {
+      console.log(session)
       switch (session.user.role) {
-        case UserRole.admin:
+        case UserRole.ADMIN:
           router.push("/dashboard/admin");
           break;
-        case UserRole.responsable:
+        case UserRole.RESPONSABLE:
           router.push("/dashboard/responsable");
           break;
-        case UserRole.manager:
+        case UserRole.MANAGER:
           router.push("/dashboard/manager");
           break;
-        case UserRole.employe:
+        case UserRole.EMPLOYE:
           router.push("/dashboard/employe");
           break;
         default:
@@ -79,6 +81,7 @@ export default function AuthForm() {
       name: "",
       firstName: "",
       phoneNumber: "",
+      role: UserRole.EMPLOYE,
     });
     setError("");
   };
@@ -100,6 +103,7 @@ export default function AuthForm() {
         setError(result.error);
       } else {
         resetForm();
+
         router.push("/dashboard");
       }
     } catch (error: unknown) {

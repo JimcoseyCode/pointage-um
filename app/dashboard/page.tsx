@@ -2,7 +2,8 @@
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { UserRole } from "@/types/auth/auth";
+import { UserRole } from "@/types";
+
 
 export default function DashboardPage() {
   const { data: session, status } = useSession({
@@ -21,16 +22,16 @@ export default function DashboardPage() {
   if (!session?.user?.role) {
     redirect("/auth");
   }
-
   // Redirection selon le rôle
   switch (session.user.role) {
-    case UserRole.admin:
+    case UserRole.ADMIN:
       redirect("/dashboard/admin");
-    case UserRole.responsable:
+    case UserRole.RESPONSABLE:
       redirect("/dashboard/responsable");
-    case UserRole.manager:
+    case UserRole.MANAGER:
       redirect("/dashboard/manager");
-    case UserRole.employe:
+    case UserRole.EMPLOYE:
+      console.log(session)
       redirect("/dashboard/employe");
     default:
       redirect("/auth");

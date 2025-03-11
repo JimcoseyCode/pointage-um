@@ -1,6 +1,6 @@
 import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
-import { UserRole } from "@/types/auth/auth";
+import { UserRole } from "@/types";
 
 export default withAuth(
   function middleware(req) {
@@ -11,22 +11,22 @@ export default withAuth(
     if (token) {
       // Rediriger vers le bon tableau de bord en fonction du rôle
       switch (token.role) {
-        case UserRole.admin:
+        case UserRole.ADMIN:
           if (!path.startsWith("/dashboard/admin")) {
             return NextResponse.redirect(new URL("/dashboard/admin", req.url));
           }
           break;
-        case UserRole.responsable:
+        case UserRole.RESPONSABLE:
           if (!path.startsWith("/dashboard/responsable")) {
             return NextResponse.redirect(new URL("/dashboard/responsable", req.url));
           }
           break;
-        case UserRole.manager:
+        case UserRole.MANAGER:
           if (!path.startsWith("/dashboard/manager")) {
             return NextResponse.redirect(new URL("/dashboard/manager", req.url));
           }
           break;
-        case UserRole.employe:
+        case UserRole.EMPLOYE:
           if (!path.startsWith("/dashboard/employe")) {
             return NextResponse.redirect(new URL("/dashboard/employe", req.url));
           }
