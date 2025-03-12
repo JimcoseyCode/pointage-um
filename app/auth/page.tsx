@@ -34,7 +34,7 @@ export default function AuthForm() {
     name: "",
     firstName: "",
     phoneNumber: "",
-    role: UserRole.RESPONSABLE,
+    role: UserRole.EMPLOYE,
   });
   const [error, setError] = useState("");
 
