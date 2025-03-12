@@ -1,13 +1,10 @@
 // types/index.ts
-
 export enum UserRole {
-  admin = "admin",
-  manager = "manager",
-  employe = "employe",
-  responsable = "responsable"
-
+    ADMIN = 'admin',
+    RESPONSABLE = 'responsable',
+    MANAGER = 'manager',
+    EMPLOYE = 'employe'
 }
-
 export interface User {
     id: string;
     name: string;

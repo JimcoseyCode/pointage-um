@@ -32,7 +32,6 @@ const Planning = () => {
   const [employees, setEmployees] = useState<Employee[]>([
     { id: 1, name: 'EL HILALI HAMZA', plannedTime: '08:00 - 15:00', realTime: '', tasks: 'Chantier A, Peinture', notes: 'Pause de 30 minutes', details: 'faire le mur A', lundi: '08:00 - 15:00',mardi:'',mercredi:'',jeudi:'11:00 - 12:00',vendredi:'',samedi:'',dimanche:'' },
     { id: 2, name: 'RAPHAEL BOUCHRANI', plannedTime: '08:00 - 12:00 / 15:00 - 18:00', realTime: '', tasks: 'Chantier B, Logistique', notes: 'Retard de 10 minutes', details: 'recupere le matériel ', lundi: '08:00 - 12:00 / 15:00 - 18:00',mardi:'',mercredi:'',jeudi:'',vendredi:'',samedi:'16:00 - 19:00',dimanche:''},
-   
   ]);
 
   const [searchQuery, setSearchQuery] = useState('');

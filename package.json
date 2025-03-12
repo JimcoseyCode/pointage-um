@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "nextjs",
   "version": "0.1.0",
   "private": true,
@@ -47,4 +48,59 @@
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.26.0"
   }
+=======
+    "name": "nextjs",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "postinstall": "prisma generate"
+    },
+    "dependencies": {
+        "@headlessui/react": "^2.2.0",
+        "@heroicons/react": "^2.2.0",
+        "@prisma/client": "^6.4.1",
+        "@radix-ui/react-label": "^2.1.2",
+        "@radix-ui/react-navigation-menu": "^1.2.4",
+        "@radix-ui/react-progress": "^1.1.1",
+        "@radix-ui/react-select": "^2.1.6",
+        "@radix-ui/react-slot": "^1.1.2",
+        "@radix-ui/react-tabs": "^1.1.3",
+        "bcryptjs": "^3.0.2",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "fs": "^0.0.1-security",
+        "github-markdown-css": "^5.8.1",
+        "lucide-react": "^0.474.0",
+        "mongodb": "^6.13.0",
+        "motion": "^12.4.10",
+        "next": "15.1.6",
+        "next-auth": "^4.24.11",
+        "prisma": "^6.4.1",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-markdown": "^10.1.0",
+        "tailwind-merge": "^3.0.1",
+        "tailwindcss-animate": "^1.0.7"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3.3.0",
+        "@eslint/js": "^9.21.0",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "@typescript-eslint/parser": "^6.21.0",
+        "eslint": "^8.56.0",
+        "eslint-config-next": "^15.1.6",
+        "postcss": "^8",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5.3.3",
+        "typescript-eslint": "^8.26.0"
+    }
+>>>>>>> a86e09c8514d8db54ddbeeb6b02454fad17aa06c
 }

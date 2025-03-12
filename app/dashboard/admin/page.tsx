@@ -17,7 +17,7 @@ export default function AdminDashboard() {
     );
   }
 
-  if (!session?.user || session.user.role !== UserRole.admin) {
+  if (!session?.user || session.user.role !== UserRole.ADMIN) {
     redirect("/auth");
   }
 

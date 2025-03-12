@@ -6,25 +6,145 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL") // À définir dans ton fichier .env
+  url      = env("DATABASE_URL")
 }
 
-// Définis un enum pour les rôles
 enum Role {
   admin
-  manager
-  responsable
   employe
+  responsable
+  manager
 }
 
-model User {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+enum TaskStatus {
+  pending
+  inProgress
+  completed
+}
+
+enum ValidationMode {
+  managerOnly
+  both
+}
+
+model Admin {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   firstName   String
-  email       String    @unique
+  email       String   @unique
   password    String
   phoneNumber String
-  role        Role      // Utilise l'enum Role pour le champ role
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  role        Role     @default(admin)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  actionsLog  String[]
+}
+
+model Responsable {
+  id                  String              @id @default(auto()) @map("_id") @db.ObjectId
+  name                String
+  firstName           String
+  email               String              @unique
+  password            String
+  phoneNumber         String
+  role                Role                @default(responsable)
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  missionsCreated     Mission[]
+  validationHistories ValidationHistory[]
+}
+
+model Manager {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  firstName       String
+  email           String    @unique
+  password        String
+  phoneNumber     String
+  role            Role      @default(manager)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  missionsManaged Mission[]
+}
+
+model Employe {
+  id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  firstName     String
+  email         String         @unique
+  password      String
+  phoneNumber   String
+  role          Role           @default(employe)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  slots         Slot[]
+  notifications Notification[]
+}
+
+model Mission {
+  id                  String              @id @default(auto()) @map("_id") @db.ObjectId
+  title               String
+  description         String
+  validationMode      ValidationMode      @default(both)
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  createdById         String              @db.ObjectId
+  createdBy           Responsable         @relation(fields: [createdById], references: [id])
+  managerId           String              @db.ObjectId
+  manager             Manager             @relation(fields: [managerId], references: [id])
+  tasks               Task[]
+  validationHistories ValidationHistory[]
+}
+
+model Task {
+  id                String       @id @default(auto()) @map("_id") @db.ObjectId
+  description       String
+  status            TaskStatus   @default(pending)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  managerValidated  Boolean      @default(false)
+  employeeValidated Boolean      @default(false)
+  validations       Validation[]
+  missionId         String       @db.ObjectId
+  mission           Mission      @relation(fields: [missionId], references: [id])
+  slotId            String       @db.ObjectId
+  slot              Slot         @relation(fields: [slotId], references: [id])
+}
+
+model Slot {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  startDate    DateTime
+  endDate      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  assignedToId String   @db.ObjectId
+  assignedTo   Employe  @relation(fields: [assignedToId], references: [id])
+  tasks        Task[]
+}
+
+model Validation {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  validatedBy String
+  validatedAt DateTime @default(now())
+  taskId      String   @db.ObjectId
+  task        Task     @relation(fields: [taskId], references: [id])
+}
+
+model ValidationHistory {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  validationMode ValidationMode
+  changedById    String         @db.ObjectId
+  changedBy      Responsable    @relation(fields: [changedById], references: [id])
+  missionId      String         @db.ObjectId
+  mission        Mission        @relation(fields: [missionId], references: [id])
+  changedAt      DateTime       @default(now())
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  message   String
+  read      Boolean  @default(false)
+  userId    String   @db.ObjectId
+  user      Employe  @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }
