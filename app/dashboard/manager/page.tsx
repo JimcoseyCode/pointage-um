@@ -1,43 +1,33 @@
-"use client";
+import React from 'react';
+import Layout from './components/Layout';
+import Planning from './components/Planning';
 
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import { UserRole } from "@/types";
-import { LogoutButton } from "@/components/ui/LogoutButton";
+const PlanningPage = () => {
+    return(
+        <Layout>
+            <Planning /> 
+        </Layout>
+    );
+};
 
-export default function ManagerDashboard() {
-  const { data: session } = useSession();
+export default PlanningPage;
 
-  if (!session || session.user.role !== UserRole.manager) {
-    redirect("/auth");
-  }
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-semibold">Dashboard Manager</h1>
-            <LogoutButton />
-          </div>
-        </div>
-      </header>
-      <div className="p-8">
-        {/* <h1 className="text-2xl font-bold mb-4">Dashboard Manager</h1> */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Planning équipe */}
-          <div className="p-6 bg-white rounded-lg shadow">
-            <h2 className="font-semibold mb-4">Planning Équipe</h2>
-            {/* Calendrier */}
-          </div>
+// import React from 'react';
+// import Head from 'next/head'; // Import de Head
+// import Layout from './components/Layout';
+// import Planning from './components/Planning';
 
-          {/* Validation des pointages */}
-          <div className="p-6 bg-white rounded-lg shadow">
-            <h2 className="font-semibold mb-4">Validation Pointages</h2>
-            {/* Liste des pointages */}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+// const PlanningPage = () => {
+//   return (
+//     <Layout>
+//       <Head>
+//         <title>Planning - Gestion des employés</title>
+//         <meta name="description" content="Gestion du planning des employés" />
+//       </Head>
+//       <Planning />
+//     </Layout>
+//   );
+// };
+
+// export default PlanningPage;  

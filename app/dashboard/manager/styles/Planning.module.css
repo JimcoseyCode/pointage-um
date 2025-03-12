@@ -1,0 +1,155 @@
+/* styles/Planning.module.css */
+
+.planning {
+  padding: 20px;
+  background-color: #f9f9f9; /* Gris très clair */
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.searchInput {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.dateNavigation {
+  display: flex;
+  align-items: center;
+}
+
+.navButton, .todayButton {
+  padding: 8px 12px;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.header {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.viewButton {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.addTaskButton {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f4f4f4;
+}
+
+.detailsButton {
+  padding: 5px 10px;
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.playButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #007bff;
+}
+
+
+.addEmployeeButton {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dateNavButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 1.2em;
+}
+
+.employeePresent {
+  background-color: #61ec6c; /* Vert clair */
+}
+
+
+
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacement entre les éléments */
+}
+
+.buttonGroup input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttonGroup button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buttonGroup button:first-of-type {
+  background-color: #4CAF50; /* Vert pour Enregistrer */
+  color: white;
+}
+
+.buttonGroup button:first-of-type:hover {
+  background-color: #45a049;
+}
+
+.buttonGroup button:last-of-type {
+  background-color: #f44336; /* Rouge pour Annuler */
+  color: white;
+}
+
+.buttonGroup button:last-of-type:hover {
+  background-color: #d32f2f;
+}

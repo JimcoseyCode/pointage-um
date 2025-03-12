@@ -1,0 +1,87 @@
+/* .navbar{
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+/* .menu li {
+    margin: 15px 0;
+    cursor: pointer;
+} 
+
+.menu li:hover {
+    color: #ddd;
+}
+
+
+.icon {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  .menu li {
+    display: flex;
+    align-items: center;
+
+  } */
+
+
+
+  
+.navbar {
+    width: 280px; /* Légèrement plus large */
+    background-color: #f0f0f0; /* Gris clair */
+    color: #333; /* Texte plus foncé */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    display: flex;
+    flex-direction: column; /* Pour organiser le logo et le menu en colonne */
+    border-right: 1px solid #ddd;
+    position: fixed;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px; /* Plus d'espace sous le logo */
+    color: #007bff; /* Couleur bleue, comme sur l'image */
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1; /* Le menu prend l'espace restant */
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px; /* Coins arrondis */
+    transition: background-color 0.3s ease; /* Animation au survol */
+}
+
+.menu li:hover {
+    background-color: #e0e0e0; /* Gris légèrement plus foncé au survol */
+}
+
+.icon {
+    margin-right: 15px;
+    font-size: 1.2em; /* Icônes un peu plus grandes */
+    color: #555; /* Couleur des icônes */
+}
+
