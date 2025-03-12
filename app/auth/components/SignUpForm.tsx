@@ -9,7 +9,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
+} from "./ui/select";
 import { FormData} from "../types";
 import { UserRole } from "@/types";
 
