@@ -1,0 +1,107 @@
+/*styles/Topbar.module.css */
+
+/*
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+}
+
+.profileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.topbar h1 {
+  font-size: 1.2em; 
+  margin: 0;
+}
+*/
+
+
+
+
+
+/* app/styles/Topbar.module.css */
+
+/* .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profileImage {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%;
+    margin-left: 15px; 
+  }
+   */
+
+
+
+
+
+
+   .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f9f9f9; /* Gris très clair */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee; /* Légère bordure en bas */
+  }
+  
+  .title {
+    font-size: 16px; /* Plus petit */
+    font-weight: 500; /* Moins gras */
+    color: #333;
+  }
+  
+  .rightSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .date {
+    font-size: 14px;
+    color: #666;
+    margin-right: 20px;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profileImage {
+    width: 50px; /* Plus petit */
+    height: 50px; /* Plus petit */
+    border-radius: 50%;
+    border: 0px solid #ddd; /* Bordure légère */
+  }
+ 
+
+
+
+
+
+
