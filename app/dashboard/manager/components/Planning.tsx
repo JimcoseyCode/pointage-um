@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import styles from '../styles/Planning.module.css';
 import { FaPlay, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-
+import LogoutButton from '@/components/LogoutButton';
 interface Employee {
   id: number;
   name: string;
@@ -237,6 +237,8 @@ const Planning = () => {
 
   return (
     <div className={styles.planning}>
+      {/* <LogoutButton /> */}
+      
       <div className={styles.topSection}>
         <input type="text" placeholder="Rechercher un employé" className={styles.searchInput} value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
         <button className={styles.addEmployeeButton} onClick={() => setNewEmployee({ id: 0, name: '', plannedTime: '', realTime: '', tasks: '', notes: '', details: '', lundi: '', mardi: '', mercredi: '', jeudi: '', vendredi: '', samedi: '', dimanche: '' })}>Ajouter un employé</button>

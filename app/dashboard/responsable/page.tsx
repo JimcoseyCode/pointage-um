@@ -1,88 +1,13 @@
-"use client";
+import React from 'react';
+import Layout from './components/Layout';
+import ViewSettingsComponent from './components/ViewSettings'; // ✅ Renommé pour éviter le conflit
 
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import { UserRole } from "@/types";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
-import { LogoutButton } from "@/components/ui/LogoutButton";
-
-export default function ResponsableDashboard() {
-  const { data: session, status } = useSession();
-
-  if (status === "loading") {
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <LoadingSpinner />
-      </div>
+const ViewSettingsPage = () => { 
+    return(
+        <Layout>
+            <ViewSettingsComponent /> {/* ✅ Utilisation correcte */}
+        </Layout>
     );
-  }
+};
 
-  if (!session || session.user.role !== UserRole.RESPONSABLE) {
-    redirect("/auth");
-  }
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-semibold">Dashboard Responsable</h1>
-            <LogoutButton />
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* Vue d'ensemble des équipes */}
-          <div className="p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Vue d'ensemble des équipes</h2>
-            <div className="space-y-4">
-              {/* Contenu des équipes */}
-            </div>
-          </div>
-
-          {/* Validation des plannings */}
-          <div className="p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Validation des plannings</h2>
-            <div className="space-y-4">
-              {/* Liste des plannings à valider */}
-            </div>
-          </div>
-
-          {/* Statistiques et rapports */}
-          <div className="p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Statistiques et rapports</h2>
-            <div className="space-y-4">
-              {/* Graphiques et statistiques */}
-            </div>
-          </div>
-
-          {/* Gestion des managers */}
-          <div className="p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Gestion des managers</h2>
-            <div className="space-y-4">
-              {/* Liste des managers */}
-            </div>
-          </div>
-
-          {/* Validation des congés */}
-          <div className="p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Validation des congés</h2>
-            <div className="space-y-4">
-              {/* Liste des demandes de congés */}
-            </div>
-          </div>
-
-          {/* Alertes et notifications */}
-          <div className="p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Alertes et notifications</h2>
-            <div className="space-y-4">
-              {/* Liste des alertes */}
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  );
-}
+export default ViewSettingsPage; 
