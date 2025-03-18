@@ -40,7 +40,7 @@ const Topbar = () => {
 
   return (
     <div className={styles.topbar}>
-      <div className={styles.title}>Manager</div>
+      <div className={styles.title}>Manager </div>
       <div className={styles.rightSection}>
         <div className={styles.date}>{formattedDate}</div>
         <div className={styles.profile}>

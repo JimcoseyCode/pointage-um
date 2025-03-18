@@ -1,0 +1,31 @@
+.navbar {
+    width: 4rem;
+    background-color: #1f2937;
+    color: white;
+  }
+  
+  .navItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+  
+  .navItem {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    background-color: #374151;
+    cursor: pointer;
+  }
+  
+  .navItem:hover {
+    background-color: #4b5563;
+  }
+  
+  .navIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  

@@ -25,7 +25,7 @@ export default Navbar;
 import React from 'react';
 import styles from '../styles/Navbar.module.css';
 import {FaCalendarAlt, FaUsers, FaChartBar, FaCog} from 'react-icons/fa'; // Importation des icônes
-
+import LogoutButton from '@/components/LogoutButton';
 const Navbar = () => {
     return (
         <nav className={styles.navbar}>
@@ -35,6 +35,7 @@ const Navbar = () => {
                 <li><FaUsers className={styles.icon} /> Employés</li>
                 <li><FaChartBar className={styles.icon} /> Rapports</li>
                 <li><FaCog className={styles.icon} /> Paramètres</li>
+                <LogoutButton></LogoutButton>
             </ul>
         </nav>
     );

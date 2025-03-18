@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/LogoutButton";
 import { CiUser } from "react-icons/ci";
 const Topbar = () => {
   const currentDate = new Date()
@@ -15,7 +16,10 @@ const Topbar = () => {
         <div className="text-sm text-[#666] mr-5">{formattedDate}</div>
         <div className="flex items-center">
           <span className="mr-2 text-sm font-medium">Responsable</span>
-          <CiUser />
+          <LogoutButton />
+          <div className="profile" style={{ margin: "10px" }}>
+            <CiUser />
+          </div>
         </div>
       </div>
     </div>

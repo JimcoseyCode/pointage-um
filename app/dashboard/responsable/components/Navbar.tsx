@@ -1,5 +1,5 @@
 import { Briefcase, Calendar } from "lucide-react"
-
+import LogoutButton from "@/components/LogoutButton"
 const Navbar = () => {
   return (
     <nav className="w-[280px] bg-[#333] text-white p-5 shadow-md h-screen flex flex-col fixed border-r border-[#444]">

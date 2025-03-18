@@ -1,43 +1,53 @@
+// app/dashboard/page.tsx
 "use client";
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { UserRole } from "@/types";
-import { LogoutButton } from "@/components/ui/LogoutButton";
+import Layout from "./Layout";
+import PlanningView from "./components/PlanningView";
+import DocumentsView from "./components/DocumentsView";
+import HelpView from "./components/HelpView";
+import SettingsView from "./components/SettingsView";
+import { useState } from "react";
 
 export default function EmployeDashboard() {
   const { data: session } = useSession();
+  const [activeView, setActiveView] = useState("planning"); // Vue par défaut
 
   if (!session || session.user.role !== UserRole.EMPLOYE) {
     redirect("/auth");
   }
 
+  const handleNavItemClick = (view: string) => {
+    setActiveView(view);
+  };
+
+  const renderView = () => {
+    switch (activeView) {
+      case "planning":
+        return <PlanningView />;
+      case "documents":
+        return <DocumentsView />;
+      case "help":
+        return <HelpView />;
+      case "settings":
+        return <SettingsView />;
+      default:
+        return (
+            <>
+            <h1>Bienvenue dans ton dashboard {session.user.name}</h1>
+            </>
+
+        );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-semibold">Dashboard Employé</h1>
-            <LogoutButton />
-          </div>
-        </div>
-      </header>
-      <div className="p-8">
-        {/* <h1 className="text-2xl font-bold mb-4">Dashboard Employé</h1> */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Pointage */}
-          <div className="p-6 bg-white rounded-lg shadow">
-            <h2 className="font-semibold mb-4">Pointage</h2>
-            {/* Boutons de pointage */}
-          </div>
-
-          {/* Historique */}
-          <div className="p-6 bg-white rounded-lg shadow">
-            <h2 className="font-semibold mb-4">Historique</h2>
-            {/* Liste des pointages */}
-          </div>
-        </div>
-      </div>
+      <Layout onNavItemClick={handleNavItemClick}>
+        {renderView()}
+      </Layout>
     </div>
   );
 }

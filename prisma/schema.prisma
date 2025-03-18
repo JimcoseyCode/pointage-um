@@ -148,3 +148,9 @@ model Notification {
   user      Employe  @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 }
+
+model message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  message   String
+  
+}

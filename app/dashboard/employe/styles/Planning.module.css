@@ -1,0 +1,149 @@
+.container {
+    display: flex;
+    flex: 1;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  .planningHeader {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .weekSelector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .weekLabel {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .weekBadge {
+    padding: 0.25rem 1rem;
+    border-radius: 0.375rem;
+    background-color: #374151;
+    color: white;
+  }
+  
+  .weekNavigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .navIcon {
+    cursor: pointer;
+  }
+  
+  .weekButton {
+    background-color: #374151;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 0.375rem;
+  }
+  
+  .currentTime {
+    color: #2563eb;
+    font-weight: 600;
+  }
+  
+  .scheduleTable {
+    background-color: #374151;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .tableHeader {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.25rem;
+    padding: 0.25rem;
+    font-size: 0.875rem;
+    color: white;
+    background-color: #1f2937;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  
+  .headerCell {
+    padding: 0.5rem;
+    font-weight: 500;
+    background-color: #4b5563;
+    border-radius: 0.25rem;
+  }
+  
+  .tableBody {
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .tableRow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.25rem;
+  }
+  
+  .dayCell {
+    background-color: #9ca3af;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
+  
+  .today {
+    background-color: #4ade80;
+  }
+  
+  .date {
+    font-size: 0.875rem;
+    font-weight: normal;
+  }
+  
+  .cell {
+    background-color: #e5e7eb;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .timerCell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .timerButton {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+  }
+  
+  .activeTimer {
+    background-color: #d1d5db;
+  }
+  
+  .activeTimer:hover {
+    background-color: #9ca3af;
+  }
+  
+  .inactiveTimer {
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .timerIcon {
+    width: 1rem;
+    height: 1rem;
+    color: #4b5563;
+  }
+  
+  
