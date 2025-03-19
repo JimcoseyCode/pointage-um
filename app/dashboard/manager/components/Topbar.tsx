@@ -24,6 +24,7 @@
 
 import React from 'react';
 import styles from '../styles/Topbar.module.css';
+// import Image from 'next/image';
 
 const Topbar = () => {
   const currentDate = new Date();
@@ -44,11 +45,7 @@ const Topbar = () => {
       <div className={styles.rightSection}>
         <div className={styles.date}>{formattedDate}</div>
         <div className={styles.profile}>
-          <img
-            src="/profile_h.png"
-            alt="Profile"
-            className={styles.profileImage}
-          />
+          
         </div>
       </div>
     </div>

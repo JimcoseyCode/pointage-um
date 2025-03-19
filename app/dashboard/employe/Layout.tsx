@@ -7,12 +7,12 @@ import styles from "./styles/Layout.module.css";
 
 interface LayoutProps {
   children: React.ReactNode;
-  onNavItemClick?: (view: string) => void; // Ajoutez cette ligne
+  onNavItemClick?: (view: string) => void;
 }
-export default function Layout({ children, onNavItemClick }: LayoutProps) {
+export default function Layout({ children, onNavItemClick = () => {} }: LayoutProps) {
   return (
     <div className={styles.layout}>
-      <Navbar onNavItemClick={onNavItemClick}  />
+      <Navbar onNavItemClick={onNavItemClick} />
       <div className={styles.mainContent}>
         <Topbar />
         <main className={styles.content}>{children}</main>
