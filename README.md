@@ -92,9 +92,7 @@ La documentation complète est disponible dans l'application à `/docs`. Elle in
 - Architecture du projet
 - API Reference
 - Guide de contribution
-
-
-
+  
 ## 📄 Licence
 
 Facultés des science de Montpellier © [FDS UM](LICENSE)
